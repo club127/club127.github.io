@@ -541,7 +541,7 @@
 
                         <p>1.2. Лицо, осуществившее акцепт настоящей Оферты, приобретает все права и обязанности Пользователя, предусмотренные настоящим договором.</p>
 
-                        <p>1.3. Исполнитель вправе в любой момент в одностороннем порядке изменять текст настоящего Договора посредством публикации его новой редакции по адресу: <a href="https://club127.ru/oferta">https://club127.ru/oferta</a>. Пользователь самостоятельно отслеживает такие изменения.</p>
+                        <p>1.3. Исполнитель вправе в любой момент в одностороннем порядке изменять текст настоящего Договора посредством публикации его новой редакции по адресу: <a href="#" data-doc="oferta" class="internal-link">club127.github.io</a>. Пользователь самостоятельно отслеживает такие изменения.</p>
 
                         <p>1.4. Акцептом настоящей публичной оферты является совокупность следующих действий:</p>
                         <ul>
@@ -550,7 +550,7 @@
                             <li>нажатие кнопки "Принимаю условия" в интерфейсе бота</li>
                         </ul>
 
-                        <p>1.5. При регистрации в боте Пользователь дает согласие на обработку персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ "О персональных данных" и Политикой конфиденциальности, размещенной по адресу <a href="https://club127.ru/privacy">https://club127.ru/privacy</a>.</p>
+                        <p>1.5. При регистрации в боте Пользователь дает согласие на обработку персональных данных в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ "О персональных данных" и <a href="#" data-doc="privacy" class="internal-link">Политикой конфиденциальности</a>.</p>
 
                         <h2>2. ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</h2>
                         <p><strong>Club 127</strong> – закрытый проект в Telegram, содержащий совокупность материалов об использовании искусственного интеллекта, методик автоматизации процессов, обзоров инструментов, иных информационных материалов.</p>
@@ -724,7 +724,7 @@
                         <h2>11. ПЕРСОНАЛЬНЫЕ ДАННЫЕ</h2>
                         <p>11.1. Обработка персональных данных осуществляется в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
 
-                        <p>11.2. Подробная информация об обработке персональных данных содержится в Политике конфиденциальности по адресу: <a href="https://club127.ru/privacy">https://club127.ru/privacy</a></p>
+                        <p>11.2. Подробная информация об обработке персональных данных содержится в <a href="#" data-doc="privacy" class="internal-link">Политике конфиденциальности</a>.</p>
 
                         <p>11.3. Основные обрабатываемые данные:</p>
                         <ul>
@@ -834,7 +834,7 @@
 
                         <p>1.3. Оператор уведомил Роскомнадзор о начале обработки персональных данных. Регистрационный номер в реестре операторов персональных данных: 9939642.</p>
 
-                        <p>1.4. Текст Политики доступен в сети Интернет по адресу: <a href="https://club127.ru/privacy">https://club127.ru/privacy</a></p>
+                        <p>1.4. Текст Политики доступен в сети Интернет по адресу: <a href="#" data-doc="privacy" class="internal-link">club127.github.io</a></p>
 
                         <p>1.5. Контакты для связи:</p>
                         <ul>
@@ -1145,30 +1145,46 @@
             const docLinks = document.querySelectorAll('.doc-link');
             const documents = document.querySelectorAll('.document-container');
 
+            // Handle navigation menu clicks
             docLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    const docId = this.getAttribute('data-doc');
-                    
-                    // Remove active class from all links
-                    docLinks.forEach(l => l.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Hide all documents
-                    documents.forEach(doc => doc.classList.remove('active'));
-                    
-                    // Show selected document with animation
-                    const selectedDoc = document.getElementById(docId);
-                    if (selectedDoc) {
-                        selectedDoc.classList.add('active');
-                        // Scroll to top smoothly
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+                    switchDocument(this.getAttribute('data-doc'));
                 });
             });
+
+            // Handle internal document links
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('internal-link') || e.target.closest('.internal-link')) {
+                    e.preventDefault();
+                    const link = e.target.classList.contains('internal-link') ? e.target : e.target.closest('.internal-link');
+                    const docId = link.getAttribute('data-doc');
+                    switchDocument(docId);
+                }
+            });
+
+            // Function to switch documents
+            function switchDocument(docId) {
+                // Remove active class from all menu links
+                docLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to the corresponding menu link
+                const activeLink = document.querySelector(`.doc-link[data-doc="${docId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+                
+                // Hide all documents
+                documents.forEach(doc => doc.classList.remove('active'));
+                
+                // Show selected document with animation
+                const selectedDoc = document.getElementById(docId);
+                if (selectedDoc) {
+                    selectedDoc.classList.add('active');
+                    // Scroll to top smoothly
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
         });
     </script>
 </body>
