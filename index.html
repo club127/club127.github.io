@@ -212,20 +212,109 @@
             animation-delay: 0.5s;
         }
 
-        /* Responsive adjustments for message */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
+            .top-header {
+                padding: 15px 20px;
+                min-height: 60px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+
+            .logo-text .number {
+                font-size: 17px;
+            }
+
+            .heart-button {
+                position: static;
+                margin: 0 auto;
+            }
+
             .thank-you-message {
-                font-size: 14px;
                 position: static;
                 transform: none;
                 margin-top: 10px;
+                font-size: 14px;
                 text-align: center;
                 width: 100%;
             }
-            
-            .top-header {
-                flex-wrap: wrap;
-                padding: 20px;
+
+            .thank-you-message.show {
+                transform: none;
+            }
+
+            .hero-banner {
+                padding: 40px 20px 50px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .main-content {
+                padding: 30px 20px 50px;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sidebar-nav {
+                position: static;
+                order: -1;
+            }
+
+            .bot-header {
+                font-size: 14px;
+                white-space: normal;
+            }
+
+            .document-title {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            .document-subtitle {
+                font-size: 16px;
+            }
+
+            .document-content {
+                font-size: 15px;
+            }
+
+            .document-content h2 {
+                font-size: 22px;
+                margin-top: 32px;
+            }
+
+            .document-content h3 {
+                font-size: 17px;
+            }
+
+            .footer {
+                padding: 40px 20px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .document-title {
+                font-size: 24px;
             }
         }
 
